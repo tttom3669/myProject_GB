@@ -8,7 +8,7 @@ public class Hello {
         p.hello();
         int age = 19;
         Integer age2 = 20;
-        char c ='我';
+        char c ='c';
         Character c2 = 'a';
         byte b =120;
         float weight = 66.5f;
