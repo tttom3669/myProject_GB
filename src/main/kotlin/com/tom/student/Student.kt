@@ -4,17 +4,40 @@ import java.util.*
 
 fun main() {
 //    userInput()
-    val stu = Student("Tom", 77, 99)
+    Student.pass = 50
+    val stu = Student("Eric", 77, 99)
+    val stu2 = Student("Jane", 60, 40)
+    val stu3 = Student("Hank", 50, 30)
+    val gstu = GraduateStudent("Jack", 55,65,60)
+    gstu.print()
     stu.print()
+    stu2.print()
+    stu3.print()
     println("Highest score: ${stu.highest()}")
 }
 
-class Student(var name : String?,var english :Int,var math : Int ) {
-    fun print(){
+class GraduateStudent(name: String?,english: Int,math: Int,var thesis: Int) : Student(name,english,math){
+    companion object{
+        var pass =70
+    }
+
+    override fun print() {
+        println("$name\t$english\t$math\t$thesis\t${getAverage()}\t${passOrFailed()}\t${grading()}")
+    }
+
+    override fun passOrFailed() = if(getAverage() >= pass) "Pass" else "Failed"
+}
+
+open class Student(var name : String?,var english :Int,var math : Int ) {
+    companion object{
+        @JvmStatic
+        var pass = 60
+    }
+    open fun print(){
         println("$name\t$english\t$math\t${getAverage()}\t${passOrFailed()}\t${grading()}")
     }
 
-    fun passOrFailed() = if(getAverage() >= 60) "Pass" else "Failed"
+    open fun passOrFailed() = if(getAverage() >= pass) "Pass" else "Failed"
 
     fun grading() = when(getAverage()){
         in 90..100 -> 'A'
