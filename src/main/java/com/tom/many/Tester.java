@@ -34,7 +34,7 @@ public class Tester {
     }
 
     private static void list() {
-        ArrayList <Integer> list = new ArrayList();
+        ArrayList <Integer> list = new ArrayList<>();
         list.add(5);
         list.add(3);
         list.add(1);
